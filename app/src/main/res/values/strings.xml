@@ -31,8 +31,15 @@
     <string name="insert_ingredients">500gr of Pasta</string>
     <string name="add_steps">Steps :</string>
     <string name="insert_steps">Preheat the oven on 180 degrees</string>
+    <string name="add_people">People :</string>
+    <string name="add_people_starting_value">1</string>
+    <string name="add_preparation_time">Preparation Time :</string>
+    <string name="add_cooking_time">Cooking Time :</string>
+    <string name="add_price">Price :</string>
 
 
     // Others
     <string name="not_implemented_yet">Not implemented yet, coming soon</string>
+    <string name="button_plus_content_description">Plus icon</string>
+    <string name="button_minus_content_description">Minus icon</string>
 </resources>

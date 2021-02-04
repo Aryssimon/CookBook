@@ -29,7 +29,7 @@
                 android:id="@+id/add_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="@dimen/title_upper_margin_add_activity"
                 android:fontFamily="cursive"
                 android:text="@string/add_title"
                 android:textColor="@color/black"
@@ -70,7 +70,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/insert_title" />
 
+            <ImageButton
+                android:id="@+id/button_add_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/button_plus_content_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insert_title"
+                app:srcCompat="@drawable/ic_baseline_add_24" />
+
             <LinearLayout
+                android:id="@+id/linLayout_ingredients"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -92,6 +104,119 @@
                     android:inputType="textShortMessage"
                     android:textColor="@color/dark_gray" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/add_steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="cursive"
+                android:text="@string/add_steps"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linLayout_ingredients" />
+
+            <ImageButton
+                android:id="@+id/button_add_steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/button_plus_content_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linLayout_ingredients"
+                app:srcCompat="@drawable/ic_baseline_add_24" />
+
+            <LinearLayout
+                android:id="@+id/linLayout_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_steps">
+
+                <EditText
+                    android:id="@+id/insert_steps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/insert_steps"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="@string/insert_steps"
+                    android:inputType="textShortMessage"
+                    android:textColor="@color/dark_gray" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/add_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="cursive"
+                android:text="@string/add_people"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linLayout_steps" />
+
+            <TextView
+                android:id="@+id/insert_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/add_people_starting_value"
+                android:textColor="@color/dark_gray"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/increase_people"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toEndOf="@+id/add_people"
+                app:layout_constraintTop_toTopOf="@+id/increase_people" />
+
+            <ImageButton
+                android:id="@+id/increase_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/button_plus_content_description"
+                app:layout_constraintBottom_toBottomOf="@+id/add_people"
+                app:layout_constraintStart_toEndOf="@+id/insert_people"
+                app:srcCompat="@drawable/ic_baseline_add_24" />
+
+            <ImageButton
+                android:id="@+id/decrease_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/button_minus_content_description"
+                app:layout_constraintBottom_toBottomOf="@+id/add_people"
+                app:layout_constraintEnd_toStartOf="@+id/insert_people"
+                app:srcCompat="@drawable/ic_baseline_remove_24" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="cursive"
+                android:text="@string/add_preparation_time"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_people" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

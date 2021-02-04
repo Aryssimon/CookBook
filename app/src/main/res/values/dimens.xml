@@ -1,6 +1,7 @@
 <resources>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="app_bar_height_add_activity">60dp</dimen>
+    <dimen name="title_upper_margin_add_activity">92dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
 </resources>
