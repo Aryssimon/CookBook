@@ -25,6 +25,12 @@
 
     // Add Activity
     <string name="add_activity_title">Add a new recipe</string>
+    <string name="add_title">Title :</string>
+    <string name="add_insert_title">Insert title here</string>
+    <string name="add_ingredients">Ingredients :</string>
+    <string name="insert_ingredients">500gr of Pasta</string>
+    <string name="add_steps">Steps :</string>
+    <string name="insert_steps">Preheat the oven on 180 degrees</string>
 
 
     // Others
