@@ -21,6 +21,8 @@
     <string name="ingredients_title">Ingredients</string>
     <string name="steps_title">Steps</string>
     <string name="duration_title">Duration</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
 
 
     // Add Activity

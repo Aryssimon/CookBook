@@ -64,4 +64,8 @@ class AddActivity : AppCompatActivity() {
         textView.text = value.toString()
         if (value == 1) findViewById<ImageButton>(R.id.decrease_button).isEnabled = false
     }
+
+    fun onClickConfirm(view: View) {
+        // Add recipe to DB
+    }
 }

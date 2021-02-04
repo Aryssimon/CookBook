@@ -64,16 +64,14 @@
                 android:id="@+id/recipe_total_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-condensed-light"
                 android:text="@string/example_total_time"
                 android:textAlignment="center"
                 android:textColor="@color/dark_gray"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/recipe_people"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/previousButton"
+                app:layout_constraintStart_toStartOf="@+id/previousButton"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_title" />
 
             <TextView
@@ -95,30 +93,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 android:fontFamily="sans-serif-condensed-light"
                 android:text="@string/example_price"
                 android:textAlignment="center"
                 android:textColor="@color/dark_gray"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.7"
-                app:layout_constraintStart_toEndOf="@+id/recipe_people"
+                app:layout_constraintEnd_toEndOf="@+id/nextButton"
+                app:layout_constraintStart_toStartOf="@+id/nextButton"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_title" />
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/next_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recipe_price" />
+
+            <Button
+                android:id="@+id/previousButton"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/previous_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recipe_total_time" />
 
             <TextView
                 android:id="@+id/recipe_ingredients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="cursive"
                 android:text="@string/ingredients_title"
                 android:textColor="@color/black"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipe_total_time" />
+                app:layout_constraintTop_toBottomOf="@+id/previousButton" />
 
             <TextView
                 android:id="@+id/recipe_list_ingredients"
