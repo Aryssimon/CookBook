@@ -24,4 +24,8 @@ class AddActivity : AppCompatActivity() {
         }
         return super.onContextItemSelected(item)
     }
+
+    fun onClickAddIngredient() {
+
+    }
 }

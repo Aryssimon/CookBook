@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
         setAddFloatingActionButton()
-        fillEmptyBook()
 
     }
 
@@ -82,13 +81,5 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
-    }
-
-    private fun fillEmptyBook() {
-        val title = findViewById<TextView>(R.id.recipe_title)
-        title.text = "Nouveau titre"
-
-        val time = findViewById<TextView>(R.id.recipe_total_time)
-        time.text = "55h55"
     }
 }
