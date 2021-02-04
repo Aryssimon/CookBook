@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".AddActivity">
 
@@ -179,7 +179,6 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/increase_people"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toEndOf="@+id/add_people"
                 app:layout_constraintTop_toTopOf="@+id/increase_people" />
 
@@ -204,18 +203,72 @@
                 app:srcCompat="@drawable/ic_baseline_remove_24" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/add_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:fontFamily="cursive"
-                android:text="@string/add_preparation_time"
+                android:text="@string/add_duration"
                 android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_price" />
+
+            <TextView
+                android:id="@+id/add_preparation_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/add_preparation_time"
+                android:textColor="@color/dark_gray"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_duration" />
+
+            <TextView
+                android:id="@+id/add_cooking_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/add_cooking_time"
+                android:textColor="@color/dark_gray"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_preparation_time" />
+
+            <TextView
+                android:id="@+id/add_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="cursive"
+                android:text="@string/add_price"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/add_people" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:numStars="3"
+                android:progressDrawable="@drawable/euro_rating_bar"
+                android:rating="1"
+                android:stepSize="1"
+                app:layout_constraintBottom_toBottomOf="@+id/add_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/add_price"
+                app:layout_constraintTop_toTopOf="@+id/add_price" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
