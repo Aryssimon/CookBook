@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
+import android.widget.*
 
 class AddActivity : AppCompatActivity() {
 
@@ -18,6 +17,7 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = resources.getString(R.string.add_activity_title)
+        findViewById<ImageButton>(R.id.decrease_button).isEnabled = false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -49,5 +49,19 @@ class AddActivity : AppCompatActivity() {
         editText.hint = hint
         editText.setAutofillHints(hint)
         return editText
+    }
+
+    fun onClickIncreasePeople(view: View) {
+        val textView = findViewById<TextView>(R.id.insert_people)
+        val value = textView.text.toString().toInt() + 1
+        textView.text = value.toString()
+        if (value == 2) findViewById<ImageButton>(R.id.decrease_button).isEnabled = true
+    }
+
+    fun onClickDecreasePeople(view: View) {
+        val textView = findViewById<TextView>(R.id.insert_people)
+        val value = textView.text.toString().toInt() - 1
+        textView.text = value.toString()
+        if (value == 1) findViewById<ImageButton>(R.id.decrease_button).isEnabled = false
     }
 }
