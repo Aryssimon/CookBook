@@ -14,7 +14,7 @@
     <string name="example_people">0 people</string>
     <string name="example_price">€€€</string>
     <string name="example_ingredients">There is\'nt any recipe yet\nYou should try adding a new one!</string>
-    <string name="example_steps">Simply click on the + button to write it</string>
+    <string name="example_steps">Simply click on the + button to start writing it</string>
     <string name="example_preparation_time">Preparation time: 0h00</string>
     <string name="example_cooking_time">Cooking Time: 0h00</string>
 

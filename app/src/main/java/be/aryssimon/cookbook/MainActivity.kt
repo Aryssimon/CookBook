@@ -14,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var recipeDao: RecipeDao
     private lateinit var recipeList: List<Recipe>
-    private var index: Int? = null
+    private var index: Int = -1
 
     private var recipeTitle: TextView? = null
     private var recipeTotalTime: TextView? = null
@@ -63,8 +65,9 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_delete -> {
-                Toast.makeText(this@MainActivity, R.string.not_implemented_yet, Toast.LENGTH_SHORT)
-                    .show()
+                if (recipeList.isNotEmpty()) {
+                    deleteRecipe()
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -78,12 +81,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getScreenWidth(): Int {
-        val displayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displayMetrics) // !! Deprecated
-        return displayMetrics.widthPixels
-    }
-
     private fun handleSearch(menu: Menu) {
         val searchView = menu.findItem(R.id.action_search).actionView as android.widget.SearchView
         val width = getScreenWidth()
@@ -92,7 +89,9 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                val foundIndex = recipeList.indexOfFirst { query.toLowerCase() in it.title.toLowerCase() }
+                val foundIndex = recipeList.indexOfFirst {
+                    query.toLowerCase(Locale.ROOT) in it.title.toLowerCase(Locale.ROOT)
+                }
                 if (foundIndex > -1) {
                     index = foundIndex
                     showRecipe()
@@ -112,10 +111,23 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    fun onClickNext(view: View) {
+        index += 1
+        if (index >= recipeList.size) index = 0
+        showRecipe()
+
+    }
+
+    fun onClickPrevious(view: View) {
+        index -= 1
+        if (index < 0) index = recipeList.size - 1
+        showRecipe()
+    }
+
     @SuppressLint("SetTextI18n")
     private fun showRecipe() {
         if (recipeList.isNotEmpty()) {
-            val currentRecipe = recipeList[index ?: 0]
+            val currentRecipe = recipeList[index]
 
             var priceRating = ""
             for (i in 0 until currentRecipe.price) priceRating += getString(R.string.text_price)
@@ -134,6 +146,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getScreenWidth(): Int {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics) // !! Deprecated
+        return displayMetrics.widthPixels
+    }
+
     private fun disableUselessButtons() {
         if (recipeList.size < 2) {
             findViewById<Button>(R.id.nextButton).isEnabled = false
@@ -141,30 +159,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onClickNext(view: View) {
-        index = (index ?: 0) + 1
-        if (index!! >= recipeList.size) {
-            index = 0
-        }
-        showRecipe()
-
-    }
-
-    fun onClickPrevious(view: View) {
-        index = (index ?: 0) - 1
-        if (index!! < 0) {
-            index = recipeList.size - 1
-        }
-        showRecipe()
-    }
-
     private fun initializeVariables() {
-        recipeList = Room
+        recipeDao = Room
             .databaseBuilder(this.applicationContext, AppDatabase::class.java, "database-name")
             .allowMainThreadQueries()
             .build()
             .recipeDao()
-            .getAll()
+        recipeList = recipeDao.getAll()
         index = recipeList.size / 2
         recipeTitle = findViewById(R.id.recipe_title)
         recipeTotalTime = findViewById(R.id.recipe_total_time)
@@ -181,5 +182,21 @@ class MainActivity : AppCompatActivity() {
         val remainingMinutes = minutes % 60
         if (remainingMinutes < 10) return "${hours}h0${remainingMinutes}min"
         return "${hours}h${remainingMinutes}min"
+    }
+
+    private fun deleteRecipe() {
+        val currentRecipe = recipeList[index]
+        recipeDao.delete(currentRecipe)
+        recipeList = recipeDao.getAll()
+        if (recipeList.isEmpty()) {
+            finish()
+            overridePendingTransition(0, 0)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        } else {
+            index -= 1
+            if (index < 0) index = recipeList.size - 1
+            showRecipe()
+        }
     }
 }
