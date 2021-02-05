@@ -14,7 +14,7 @@ interface RecipeDao {
     fun getById(inputId: Int): Recipe
 
     @Insert
-    fun insertAll(vararg users: Recipe)
+    fun insertAll(vararg recipe: Recipe)
 
     @Delete
     fun delete(recipe: Recipe)

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.room.Room
 
 class AddActivity : AppCompatActivity() {
 
@@ -66,6 +67,40 @@ class AddActivity : AppCompatActivity() {
     }
 
     fun onClickConfirm(view: View) {
-        // Add recipe to DB
+        val prepaHour = findViewById<EditText>(R.id.edt_prepa_hour).text.toString().toInt()
+        val prepaMinutes = findViewById<EditText>(R.id.edt_prepa_min).text.toString().toInt()
+        val cookingHour = findViewById<EditText>(R.id.edt_cooking_hour).text.toString().toInt()
+        val cookingMinutes = findViewById<EditText>(R.id.edt_cooking_min).text.toString().toInt()
+
+        var ingredients = ""
+        val ingredientsLayout = findViewById<LinearLayout>(R.id.linLayout_ingredients)
+        for (i in 0 until ingredientsLayout.childCount) {
+            ingredients += ingredientsLayout.getChildAt(i).toString() + "\n"
+        }
+        ingredients = ingredients.substring(0 until (ingredients.length - 2)) // remove last \n
+
+        var steps = ""
+        val stepsLayout = findViewById<LinearLayout>(R.id.linLayout_steps)
+        for (i in 0 until stepsLayout.childCount) {
+            steps += stepsLayout.getChildAt(i).toString() + "\n"
+        }
+        steps = steps.substring(0 until (steps.length - 2)) // remove last \n
+
+        val newRecipe = Recipe(
+            title = findViewById<EditText>(R.id.insert_title).text.toString(),
+            ingredients = ingredients,
+            steps = steps,
+            totalTime = ((prepaHour + cookingHour) * 60) + prepaMinutes + cookingMinutes,
+            preparationTime = (prepaHour * 60) + prepaMinutes,
+            cookingTime = (cookingHour * 60) + cookingMinutes,
+            people = findViewById<TextView>(R.id.insert_people).text.toString().toInt(),
+            price = findViewById<RatingBar>(R.id.ratingBar_price).rating.toString().toFloat().toInt()
+        )
+
+        val db = Room.databaseBuilder(this, AppDatabase::class.java, "database-name")
+            .allowMainThreadQueries()
+            .build()
+        val recipeDao = db.recipeDao()
+        recipeDao.insertAll(newRecipe)
     }
 }

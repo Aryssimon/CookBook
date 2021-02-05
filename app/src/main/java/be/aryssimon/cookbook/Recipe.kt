@@ -5,13 +5,13 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Recipe(
-    @PrimaryKey(autoGenerate = true) var id : Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var title: String,
     var ingredients: String,
     var steps: String,
-    var totalTime: String,
-    var preparationTime: String,
-    var cookingTime: String,
-    var people: String,
-    var price: String
+    var totalTime: Int,
+    var preparationTime: Int,
+    var cookingTime: Int,
+    var people: Int,
+    var price: Int
 )
