@@ -3,7 +3,7 @@
 
     <style name="fontEditText">
         <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textColor">?attr/myThirdColor</item>
         <item name="android:ems">10</item>
         <item name="android:inputType">textShortMessage</item>
     </style>

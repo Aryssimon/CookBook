@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/myFirstColor"
     android:fitsSystemWindows="true"
     tools:context=".AddActivity">
 
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height_add_activity"
         android:fitsSystemWindows="true"
-        android:theme="@style/Theme.CookBook.AppBarOverlay"></com.google.android.material.appbar.AppBarLayout>
+        android:theme="@style/Theme.CookBook.AppBarOverlay" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                 android:layout_marginTop="@dimen/title_upper_margin_add_activity"
                 android:fontFamily="cursive"
                 android:text="@string/add_title"
-                android:textColor="@color/black"
+                android:textColor="?attr/mySecondColor"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +52,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:hint="@string/add_insert_title"
                 android:inputType="textShortMessage"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/add_title" />
@@ -64,7 +65,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="cursive"
                 android:text="@string/add_ingredients"
-                android:textColor="@color/black"
+                android:textColor="?attr/mySecondColor"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/main_orange"
                 android:contentDescription="@string/button_plus_content_description"
                 android:onClick="onClickAddIngredient"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +105,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:hint="@string/hint_ingredients"
                     android:inputType="textShortMessage"
-                    android:textColor="@color/dark_gray" />
+                    android:textColor="?attr/myThirdColor" />
             </LinearLayout>
 
             <TextView
@@ -114,7 +116,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="cursive"
                 android:text="@string/add_steps"
-                android:textColor="@color/black"
+                android:textColor="?attr/mySecondColor"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/main_orange"
                 android:contentDescription="@string/button_plus_content_description"
                 android:onClick="onClickAddSteps"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +156,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:hint="@string/hint_steps"
                     android:inputType="textShortMessage"
-                    android:textColor="@color/dark_gray" />
+                    android:textColor="?attr/myThirdColor" />
 
             </LinearLayout>
 
@@ -165,7 +168,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="cursive"
                 android:text="@string/add_people"
-                android:textColor="@color/black"
+                android:textColor="?attr/mySecondColor"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_people_starting_value"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/increase_people"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -189,6 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:backgroundTint="@color/main_orange"
                 android:contentDescription="@string/button_plus_content_description"
                 android:onClick="onClickIncreasePeople"
                 app:layout_constraintBottom_toBottomOf="@+id/add_people"
@@ -200,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/main_orange"
                 android:contentDescription="@string/button_minus_content_description"
                 android:onClick="onClickDecreasePeople"
                 app:layout_constraintBottom_toBottomOf="@+id/add_people"
@@ -214,7 +219,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="cursive"
                 android:text="@string/add_price"
-                android:textColor="@color/black"
+                android:textColor="?attr/mySecondColor"
                 android:textSize="36sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/add_people" />
@@ -242,7 +247,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="cursive"
                 android:text="@string/add_duration"
-                android:textColor="@color/black"
+                android:textColor="?attr/mySecondColor"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -256,7 +261,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_preparation_time"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/add_duration" />
@@ -269,7 +274,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_cooking_time"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/add_preparation_time" />
@@ -279,10 +284,11 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:autofillHints="@string/add_hint_hour"
+                android:autofillHints="@string/add_hint_time"
                 android:ems="10"
-                android:hint="@string/add_hint_hour"
+                android:hint="@string/add_hint_time"
                 android:inputType="time"
+                android:textColor="?attr/myThirdColor"
                 app:layout_constraintBottom_toBottomOf="@+id/hour_prepa"
                 app:layout_constraintEnd_toStartOf="@+id/hour_prepa"
                 app:layout_constraintTop_toTopOf="@+id/hour_prepa" />
@@ -293,7 +299,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_hour"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/add_preparation_time"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -306,10 +312,11 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:autofillHints="@string/add_hint_minutes"
+                android:autofillHints="@string/add_hint_time"
                 android:ems="10"
-                android:hint="@string/add_hint_minutes"
+                android:hint="@string/add_hint_time"
                 android:inputType="time"
+                android:textColor="?attr/myThirdColor"
                 app:layout_constraintBottom_toBottomOf="@+id/hour_prepa"
                 app:layout_constraintStart_toEndOf="@+id/hour_prepa"
                 app:layout_constraintTop_toTopOf="@+id/hour_prepa" />
@@ -321,7 +328,7 @@
                 android:layout_marginStart="4dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_minutes"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/add_preparation_time"
                 app:layout_constraintStart_toEndOf="@+id/edt_prepa_min"
@@ -332,10 +339,11 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:autofillHints="@string/add_hint_hour"
+                android:autofillHints="@string/add_hint_time"
                 android:ems="10"
-                android:hint="@string/add_hint_hour"
+                android:hint="@string/add_hint_time"
                 android:inputType="time"
+                android:textColor="?attr/myThirdColor"
                 app:layout_constraintBottom_toBottomOf="@+id/hour_cooking"
                 app:layout_constraintEnd_toStartOf="@+id/hour_cooking"
                 app:layout_constraintTop_toTopOf="@+id/hour_cooking" />
@@ -346,7 +354,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_hour"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/add_cooking_time"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -359,10 +367,11 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:autofillHints="@string/add_hint_minutes"
+                android:autofillHints="@string/add_hint_time"
                 android:ems="10"
-                android:hint="@string/add_hint_minutes"
+                android:hint="@string/add_hint_time"
                 android:inputType="time"
+                android:textColor="?attr/myThirdColor"
                 app:layout_constraintBottom_toBottomOf="@+id/hour_cooking"
                 app:layout_constraintStart_toEndOf="@+id/hour_cooking"
                 app:layout_constraintTop_toTopOf="@+id/hour_cooking" />
@@ -374,7 +383,7 @@
                 android:layout_marginStart="4dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/add_minutes"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/myThirdColor"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/add_cooking_time"
                 app:layout_constraintStart_toEndOf="@+id/edt_cooking_min"
@@ -388,6 +397,7 @@
                 android:layout_marginBottom="200dp"
                 android:onClick="onClickConfirm"
                 android:text="@string/add_confirm_button"
+                android:textColor="@color/design_default_color_on_secondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -2,8 +2,10 @@ package be.aryssimon.cookbook
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +17,7 @@ import androidx.room.Room
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,8 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         return when (item.itemId) {
             R.id.action_settings -> {
-                Toast.makeText(this@MainActivity, R.string.not_implemented_yet, Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@MainActivity, R.string.not_implemented_yet, Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.action_search -> {
@@ -67,6 +69,8 @@ class MainActivity : AppCompatActivity() {
             R.id.action_delete -> {
                 if (recipeList.isNotEmpty()) {
                     deleteRecipe()
+                } else {
+                    Toast.makeText(this@MainActivity, R.string.nothing_to_delete, Toast.LENGTH_SHORT).show()
                 }
                 true
             }
@@ -83,9 +87,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleSearch(menu: Menu) {
         val searchView = menu.findItem(R.id.action_search).actionView as android.widget.SearchView
+        searchView.queryHint = resources.getString(R.string.search_bar_hint)
         val width = getScreenWidth()
-        searchView.queryHint = this.resources.getString(R.string.search_bar_hint)
-        searchView.maxWidth = width - ((width / 100) * 35) //set width to 65% of the screen
+        val pxToSave = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            120f,
+            resources.displayMetrics
+        ).toInt()
+        searchView.maxWidth = width - pxToSave
         searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -154,8 +163,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun disableUselessButtons() {
         if (recipeList.size < 2) {
-            findViewById<Button>(R.id.nextButton).isEnabled = false
-            findViewById<Button>(R.id.previousButton).isEnabled = false
+            val next = findViewById<Button>(R.id.nextButton)
+            next.isEnabled = false
+            next.setBackgroundColor(getColor(R.color.light_gray))
+            val previous = findViewById<Button>(R.id.previousButton)
+            previous.isEnabled = false
+            previous.setBackgroundColor(getColor(R.color.light_gray))
         }
     }
 

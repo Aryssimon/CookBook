@@ -45,8 +45,7 @@
     <string name="add_cooking_time">Cooking Time :</string>
     <string name="add_hour">h</string>
     <string name="add_minutes">min</string>
-    <string name="add_hint_hour">0</string>
-    <string name="add_hint_minutes">00</string>
+    <string name="add_hint_time">00</string>
     <string name="add_price">Price :</string>
     <string name="add_confirm_button">Confirm</string>
 
@@ -55,6 +54,7 @@
     <string name="empty_ingredients">You must insert at least one ingredient</string>
     <string name="empty_steps">You must insert at least one step</string>
     <string name="search_no_result">Nothing found</string>
+    <string name="nothing_to_delete">Your book is already empty</string>
 
 
     // Others
