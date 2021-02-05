@@ -92,7 +92,17 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
+                val foundIndex = recipeList.indexOfFirst { query.toLowerCase() in it.title.toLowerCase() }
+                if (foundIndex > -1) {
+                    index = foundIndex
+                    showRecipe()
+                } else {
+                    Toast.makeText(
+                        this@MainActivity,
+                        getString(R.string.search_no_result),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 return true
             }
 
@@ -105,19 +115,22 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun showRecipe() {
         if (recipeList.isNotEmpty()) {
-            val currentRecipe = recipeList[index?:0]
+            val currentRecipe = recipeList[index ?: 0]
 
             var priceRating = ""
             for (i in 0 until currentRecipe.price) priceRating += getString(R.string.text_price)
 
             recipeTitle?.text = currentRecipe.title
-            recipePeople?.text = currentRecipe.people.toString() + " " + getString(R.string.text_people)
+            recipePeople?.text =
+                currentRecipe.people.toString() + " " + getString(R.string.text_people)
             recipePrice?.text = priceRating
             recipeIngredients?.text = currentRecipe.ingredients
             recipeSteps?.text = currentRecipe.steps
             recipeTotalTime?.text = minutesToTimeFormat(currentRecipe.totalTime)
-            recipePreparationTime?.text = getString(R.string.text_prepa_time) + " " + minutesToTimeFormat(currentRecipe.preparationTime)
-            recipeCookingTime?.text = getString(R.string.text_cooking_time) + " " + minutesToTimeFormat(currentRecipe.cookingTime)
+            recipePreparationTime?.text =
+                getString(R.string.text_prepa_time) + " " + minutesToTimeFormat(currentRecipe.preparationTime)
+            recipeCookingTime?.text =
+                getString(R.string.text_cooking_time) + " " + minutesToTimeFormat(currentRecipe.cookingTime)
         }
     }
 
@@ -129,7 +142,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickNext(view: View) {
-        index = (index?:0) + 1
+        index = (index ?: 0) + 1
         if (index!! >= recipeList.size) {
             index = 0
         }
@@ -138,7 +151,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickPrevious(view: View) {
-        index = (index?:0) - 1
+        index = (index ?: 0) - 1
         if (index!! < 0) {
             index = recipeList.size - 1
         }
@@ -165,7 +178,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun minutesToTimeFormat(minutes: Int): String {
         val hours = minutes / 60
-        var remainingMinutes = minutes % 60
+        val remainingMinutes = minutes % 60
         if (remainingMinutes < 10) return "${hours}h0${remainingMinutes}min"
         return "${hours}h${remainingMinutes}min"
     }

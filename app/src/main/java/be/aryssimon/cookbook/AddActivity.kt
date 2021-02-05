@@ -1,26 +1,22 @@
 package be.aryssimon.cookbook
 
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Typeface
-import android.graphics.fonts.FontFamily
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
-import java.lang.StringBuilder
 
 class AddActivity : AppCompatActivity() {
 
-    var recipeTitle: String = ""
-    var recipeIngredients: String = ""
-    var recipeSteps: String = ""
-    var recipePrepaTime: Int = 0
-    var recipeCookingTime: Int = 0
-    var recipePrice: Int = 0
-    var recipePeople: Int = 0
+    private var recipeTitle: String = ""
+    private var recipeIngredients: String = ""
+    private var recipeSteps: String = ""
+    private var recipePrepaTime: Int = 0
+    private var recipeCookingTime: Int = 0
+    private var recipePrice: Int = 0
+    private var recipePeople: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,19 +97,31 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkInput(): Boolean{
+    private fun checkInput(): Boolean {
         return when {
             recipeTitle.isEmpty() -> {
-                Toast.makeText(this.applicationContext, getString(R.string.empty_title), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@AddActivity,
+                    getString(R.string.empty_title),
+                    Toast.LENGTH_SHORT
+                ).show()
                 false
             }
             recipeIngredients.isEmpty() -> {
-                Toast.makeText(this.applicationContext, getString(R.string.empty_ingredients), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@AddActivity,
+                    getString(R.string.empty_ingredients),
+                    Toast.LENGTH_SHORT
+                ).show()
 
                 false
             }
             recipeSteps.isEmpty() -> {
-                Toast.makeText(this.applicationContext, getString(R.string.empty_steps), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@AddActivity,
+                    getString(R.string.empty_steps),
+                    Toast.LENGTH_SHORT
+                ).show()
                 false
             }
             else -> true
@@ -148,7 +156,8 @@ class AddActivity : AppCompatActivity() {
 
         recipePeople = findViewById<TextView>(R.id.insert_people).text.toString().toInt()
 
-        recipePrice = findViewById<RatingBar>(R.id.ratingBar_price).rating.toString().toFloat().toInt()
+        recipePrice =
+            findViewById<RatingBar>(R.id.ratingBar_price).rating.toString().toFloat().toInt()
 
         val prepaHoursString = findViewById<EditText>(R.id.edt_prepa_hour).text.toString()
         val prepaHours = if (prepaHoursString.isNotEmpty()) prepaHoursString.toInt() else 0
@@ -159,7 +168,8 @@ class AddActivity : AppCompatActivity() {
         val cookingHoursString = findViewById<EditText>(R.id.edt_cooking_hour).text.toString()
         val cookingHours = if (cookingHoursString.isNotEmpty()) cookingHoursString.toInt() else 0
         val cookingMinutesString = findViewById<EditText>(R.id.edt_cooking_min).text.toString()
-        val cookingMinutes = if (cookingMinutesString.isNotEmpty()) cookingMinutesString.toInt() else 0
+        val cookingMinutes =
+            if (cookingMinutesString.isNotEmpty()) cookingMinutesString.toInt() else 0
         recipeCookingTime = (cookingHours * 60) + cookingMinutes
 
     }
