@@ -50,6 +50,11 @@
     <string name="add_price">Price :</string>
     <string name="add_confirm_button">Confirm</string>
 
+    // Add Activity Errors
+    <string name="empty_title">You must insert a title</string>
+    <string name="empty_ingredients">You must insert at least one ingredient</string>
+    <string name="empty_steps">You must insert at least one step</string>
+
 
     // Others
     <string name="not_implemented_yet">Not implemented yet, coming soon</string>

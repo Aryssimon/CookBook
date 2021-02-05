@@ -14,6 +14,15 @@ import java.lang.StringBuilder
 
 class AddActivity : AppCompatActivity() {
 
+    var recipeTitle: String = ""
+    var recipeIngredients: String = ""
+    var recipeSteps: String = ""
+    var recipePrepaTime: Int = 0
+    var recipeCookingTime: Int = 0
+    var recipePrice: Int = 0
+    var recipePeople: Int = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
@@ -68,43 +77,82 @@ class AddActivity : AppCompatActivity() {
     }
 
     fun onClickConfirm(view: View) {
-        val prepaHour = findViewById<EditText>(R.id.edt_prepa_hour).text.toString().toInt()
-        val prepaMinutes = findViewById<EditText>(R.id.edt_prepa_min).text.toString().toInt()
-        val cookingHour = findViewById<EditText>(R.id.edt_cooking_hour).text.toString().toInt()
-        val cookingMinutes = findViewById<EditText>(R.id.edt_cooking_min).text.toString().toInt()
+        initializeVariables()
+        if (checkInput()) {
+            val newRecipe = Recipe(
+                title = recipeTitle,
+                ingredients = recipeIngredients,
+                steps = recipeSteps,
+                totalTime = recipePrepaTime + recipeCookingTime,
+                preparationTime = recipePrepaTime,
+                cookingTime = recipeCookingTime,
+                people = recipePeople,
+                price = recipePrice
+            )
 
-        var ingredients = ""
+            val recipeDao = Room.databaseBuilder(this, AppDatabase::class.java, "database-name")
+                .allowMainThreadQueries()
+                .build()
+                .recipeDao()
+            recipeDao.insertAll(newRecipe)
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun checkInput(): Boolean{
+        return when {
+            recipeTitle.isEmpty() -> {
+                Toast.makeText(this.applicationContext, getString(R.string.empty_title), Toast.LENGTH_SHORT).show()
+                false
+            }
+            recipeIngredients.isEmpty() -> {
+                Toast.makeText(this.applicationContext, getString(R.string.empty_ingredients), Toast.LENGTH_SHORT).show()
+
+                false
+            }
+            recipeSteps.isEmpty() -> {
+                Toast.makeText(this.applicationContext, getString(R.string.empty_steps), Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> true
+
+        }
+    }
+
+    private fun initializeVariables() {
+        recipeTitle = findViewById<EditText>(R.id.insert_title).text.toString()
+
         val ingredientsLayout = findViewById<LinearLayout>(R.id.linLayout_ingredients)
+        recipeIngredients = ""
         for (i in 0 until ingredientsLayout.childCount) {
-            ingredients += (ingredientsLayout.getChildAt(i) as EditText).text.toString() + "\n"
+            recipeIngredients += (ingredientsLayout.getChildAt(i) as EditText).text.toString()
+            if (i < ingredientsLayout.childCount - 1) recipeIngredients += "\n"
         }
-        ingredients = ingredients.substring(0 until (ingredients.length - 2)) // remove last \n
 
-        var steps = ""
         val stepsLayout = findViewById<LinearLayout>(R.id.linLayout_steps)
+        recipeSteps = ""
         for (i in 0 until stepsLayout.childCount) {
-            steps += (stepsLayout.getChildAt(i) as EditText).text.toString() + "\n"
+            recipeSteps += (stepsLayout.getChildAt(i) as EditText).text.toString()
+            if (i < stepsLayout.childCount - 1) recipeSteps += "\n"
         }
-        steps = steps.substring(0 until (steps.length - 2)) // remove last \n
 
-        val newRecipe = Recipe(
-            title = findViewById<EditText>(R.id.insert_title).text.toString(),
-            ingredients = ingredients,
-            steps = steps,
-            totalTime = ((prepaHour + cookingHour) * 60) + prepaMinutes + cookingMinutes,
-            preparationTime = (prepaHour * 60) + prepaMinutes,
-            cookingTime = (cookingHour * 60) + cookingMinutes,
-            people = findViewById<TextView>(R.id.insert_people).text.toString().toInt(),
-            price = findViewById<RatingBar>(R.id.ratingBar_price).rating.toString().toFloat().toInt()
-        )
+        recipePeople = findViewById<TextView>(R.id.insert_people).text.toString().toInt()
 
-        val recipeDao = Room.databaseBuilder(this, AppDatabase::class.java, "database-name")
-            .allowMainThreadQueries()
-            .build()
-            .recipeDao()
-        recipeDao.insertAll(newRecipe)
+        recipePrice = findViewById<RatingBar>(R.id.ratingBar_price).rating.toString().toFloat().toInt()
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        val prepaHoursString = findViewById<EditText>(R.id.edt_prepa_hour).text.toString()
+        val prepaHours = if (prepaHoursString.isNotEmpty()) prepaHoursString.toInt() else 0
+        val prepaMinutesString = findViewById<EditText>(R.id.edt_prepa_min).text.toString()
+        val prepaMinutes = if (prepaMinutesString.isNotEmpty()) prepaMinutesString.toInt() else 0
+        recipePrepaTime = (prepaHours * 60) + prepaMinutes
+
+        val cookingHoursString = findViewById<EditText>(R.id.edt_cooking_hour).text.toString()
+        val cookingHours = if (cookingHoursString.isNotEmpty()) cookingHoursString.toInt() else 0
+        val cookingMinutesString = findViewById<EditText>(R.id.edt_cooking_min).text.toString()
+        val cookingMinutes = if (cookingMinutesString.isNotEmpty()) cookingMinutesString.toInt() else 0
+        recipeCookingTime = (cookingHours * 60) + cookingMinutes
+
     }
 }
