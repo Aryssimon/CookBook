@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.room.Room
+import java.lang.StringBuilder
 
 class AddActivity : AppCompatActivity() {
 
@@ -75,14 +76,14 @@ class AddActivity : AppCompatActivity() {
         var ingredients = ""
         val ingredientsLayout = findViewById<LinearLayout>(R.id.linLayout_ingredients)
         for (i in 0 until ingredientsLayout.childCount) {
-            ingredients += ingredientsLayout.getChildAt(i).toString() + "\n"
+            ingredients += (ingredientsLayout.getChildAt(i) as EditText).text.toString() + "\n"
         }
         ingredients = ingredients.substring(0 until (ingredients.length - 2)) // remove last \n
 
         var steps = ""
         val stepsLayout = findViewById<LinearLayout>(R.id.linLayout_steps)
         for (i in 0 until stepsLayout.childCount) {
-            steps += stepsLayout.getChildAt(i).toString() + "\n"
+            steps += (stepsLayout.getChildAt(i) as EditText).text.toString() + "\n"
         }
         steps = steps.substring(0 until (steps.length - 2)) // remove last \n
 
@@ -97,10 +98,13 @@ class AddActivity : AppCompatActivity() {
             price = findViewById<RatingBar>(R.id.ratingBar_price).rating.toString().toFloat().toInt()
         )
 
-        val db = Room.databaseBuilder(this, AppDatabase::class.java, "database-name")
+        val recipeDao = Room.databaseBuilder(this, AppDatabase::class.java, "database-name")
             .allowMainThreadQueries()
             .build()
-        val recipeDao = db.recipeDao()
+            .recipeDao()
         recipeDao.insertAll(newRecipe)
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

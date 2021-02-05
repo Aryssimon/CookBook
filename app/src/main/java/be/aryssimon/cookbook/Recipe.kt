@@ -9,9 +9,10 @@ data class Recipe(
     var title: String,
     var ingredients: String,
     var steps: String,
+    var people: Int,
+    var price: Int,
+    // Time is in minutes
     var totalTime: Int,
     var preparationTime: Int,
-    var cookingTime: Int,
-    var people: Int,
-    var price: Int
+    var cookingTime: Int
 )
