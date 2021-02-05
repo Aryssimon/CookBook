@@ -132,8 +132,8 @@ class MainActivity : AppCompatActivity() {
         index = (index?:0) + 1
         if (index!! >= recipeList.size) {
             index = 0
-            showRecipe()
         }
+        showRecipe()
 
     }
 
@@ -141,8 +141,8 @@ class MainActivity : AppCompatActivity() {
         index = (index?:0) - 1
         if (index!! < 0) {
             index = recipeList.size - 1
-            showRecipe()
         }
+        showRecipe()
     }
 
     private fun initializeVariables() {
@@ -165,7 +165,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun minutesToTimeFormat(minutes: Int): String {
         val hours = minutes / 60
-        val remainingMinutes = minutes % 60
+        var remainingMinutes = minutes % 60
+        if (remainingMinutes < 10) return "${hours}h0${remainingMinutes}min"
         return "${hours}h${remainingMinutes}min"
     }
 }

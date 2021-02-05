@@ -9,12 +9,12 @@
     <string name="search_bar_hint">What are we cooking?</string>
 
     // Example Recipe when book is empty
-    <string name="example_title">Book is empty</string>
+    <string name="example_title">Empty Book</string>
     <string name="example_total_time">0h00</string>
     <string name="example_people">0 people</string>
     <string name="example_price">€€€</string>
-    <string name="example_ingredients">Your recipe book is empty</string>
-    <string name="example_steps">You should try adding a new one</string>
+    <string name="example_ingredients">There is\'nt any recipe yet\nYou should try adding a new one!</string>
+    <string name="example_steps">Simply click on the + button to write it</string>
     <string name="example_preparation_time">Preparation time: 0h00</string>
     <string name="example_cooking_time">Cooking Time: 0h00</string>
 
@@ -24,8 +24,8 @@
     <string name="duration_title">Duration</string>
     <string name="next_button">Next</string>
     <string name="previous_button">Previous</string>
-    <string name="text_prepa_time">Preparation time: </string>
-    <string name="text_cooking_time">Cooking Time: </string>
+    <string name="text_prepa_time">• Preparation time: </string>
+    <string name="text_cooking_time">• Cooking Time: </string>
     <string name="text_people"> people</string>
     <string name="text_price">€</string>
 

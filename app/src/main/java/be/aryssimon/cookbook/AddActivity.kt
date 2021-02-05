@@ -127,15 +127,23 @@ class AddActivity : AppCompatActivity() {
         val ingredientsLayout = findViewById<LinearLayout>(R.id.linLayout_ingredients)
         recipeIngredients = ""
         for (i in 0 until ingredientsLayout.childCount) {
-            recipeIngredients += (ingredientsLayout.getChildAt(i) as EditText).text.toString()
-            if (i < ingredientsLayout.childCount - 1) recipeIngredients += "\n"
+            val line = (ingredientsLayout.getChildAt(i) as EditText).text.toString()
+            if (line.isNotEmpty()) {
+                recipeIngredients += "• $line"
+                if (i < ingredientsLayout.childCount - 1) recipeIngredients += "\n"
+            }
+
         }
 
         val stepsLayout = findViewById<LinearLayout>(R.id.linLayout_steps)
         recipeSteps = ""
         for (i in 0 until stepsLayout.childCount) {
-            recipeSteps += (stepsLayout.getChildAt(i) as EditText).text.toString()
-            if (i < stepsLayout.childCount - 1) recipeSteps += "\n"
+            val line = (stepsLayout.getChildAt(i) as EditText).text.toString()
+            if (line.isNotEmpty()) {
+                recipeSteps += "• $line"
+                if (i < stepsLayout.childCount - 1) recipeSteps += "\n"
+            }
+
         }
 
         recipePeople = findViewById<TextView>(R.id.insert_people).text.toString().toInt()
