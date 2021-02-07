@@ -28,6 +28,10 @@
     <string name="text_cooking_time">• Cooking Time: </string>
     <string name="text_people"> people</string>
     <string name="text_price">€</string>
+    <string name="delete_recipe_title">Delete this recipe</string>
+    <string name="delete_recipe_message">Are you sure?</string>
+    <string name="confirm_delete">Delete</string>
+    <string name="cancel_delete">Cancel</string>
 
 
     // Add Activity
