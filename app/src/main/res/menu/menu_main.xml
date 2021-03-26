@@ -16,9 +16,9 @@
         android:title="@string/action_delete"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_baseline_edit_24"
         android:orderInCategory="102"
-        android:title="@string/action_settings"
+        android:title="@string/action_edit"
         app:showAsAction="ifRoom" />
 </menu>

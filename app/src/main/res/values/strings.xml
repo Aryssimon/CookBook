@@ -3,7 +3,7 @@
     <string name="app_name">CookBook</string>
 
     // Menu action buttons
-    <string name="action_settings">Settings</string>
+    <string name="action_edit">Edit</string>
     <string name="action_search">Search</string>
     <string name="action_delete">Delete</string>
     <string name="search_bar_hint">What are we cooking?</string>
@@ -52,6 +52,7 @@
     <string name="add_hint_time">00</string>
     <string name="add_price">Price :</string>
     <string name="add_confirm_button">Confirm</string>
+    <string name="prefix_ingredients_steps">• </string>
 
 
     // Edit Activity
@@ -64,6 +65,8 @@
     <string name="empty_steps">You must insert at least one step</string>
     <string name="search_no_result">Nothing found</string>
     <string name="nothing_to_delete">Your book is already empty</string>
+    <string name="nothing_to_edit">Nothing to edit, your book is empty</string>
+    <string name="edit_error_launching">Launching EditActivity without an associated recipe.</string>
 
 
     // Others

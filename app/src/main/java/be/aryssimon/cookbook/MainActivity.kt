@@ -3,7 +3,6 @@ package be.aryssimon.cookbook
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.TypedValue
@@ -18,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 
@@ -62,8 +60,20 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
 
         return when (item.itemId) {
-            R.id.action_settings -> {
-                Toast.makeText(this@MainActivity, R.string.not_implemented_yet, Toast.LENGTH_SHORT).show()
+            R.id.action_edit -> {
+                if (recipeList.isNotEmpty()) {
+                    val intent = Intent(this, EditActivity::class.java)
+                    val b = Bundle()
+                    b.putInt("recipeIndex", index)
+                    intent.putExtras(b)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(
+                        this@MainActivity,
+                        R.string.nothing_to_edit,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 true
             }
             R.id.action_search -> {
@@ -81,7 +91,11 @@ class MainActivity : AppCompatActivity() {
                         .setNegativeButton(getString(R.string.cancel_delete), null)
                         .show()
                 } else {
-                    Toast.makeText(this@MainActivity, R.string.nothing_to_delete, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MainActivity,
+                        R.string.nothing_to_delete,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 true
             }

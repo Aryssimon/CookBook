@@ -137,7 +137,7 @@ open class AddActivity : AppCompatActivity() {
         for (i in 0 until ingredientsLayout.childCount) {
             val line = (ingredientsLayout.getChildAt(i) as EditText).text.toString()
             if (line.isNotEmpty()) {
-                recipeIngredients += "• $line"
+                recipeIngredients += resources.getString(R.string.prefix_ingredients_steps) + line
                 if (i < ingredientsLayout.childCount - 1) recipeIngredients += "\n"
             }
 
@@ -148,7 +148,7 @@ open class AddActivity : AppCompatActivity() {
         for (i in 0 until stepsLayout.childCount) {
             val line = (stepsLayout.getChildAt(i) as EditText).text.toString()
             if (line.isNotEmpty()) {
-                recipeSteps += "• $line"
+                recipeSteps += resources.getString(R.string.prefix_ingredients_steps) + line
                 if (i < stepsLayout.childCount - 1) recipeSteps += "\n"
             }
 
