@@ -8,7 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 
-class AddActivity : AppCompatActivity() {
+open class AddActivity : AppCompatActivity() {
 
     private var recipeTitle: String = ""
     private var recipeIngredients: String = ""
@@ -21,7 +21,7 @@ class AddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add)
+        setContentView(R.layout.activity_add_edit)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = resources.getString(R.string.add_activity_title)
         findViewById<ImageButton>(R.id.decrease_button).isEnabled = false
