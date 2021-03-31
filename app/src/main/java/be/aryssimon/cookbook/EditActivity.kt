@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 
@@ -59,6 +61,12 @@ class EditActivity : AppCompatActivity() {
         for (line in splitSteps) {
             addOneStep(line.subSequence(1, line.length) as String)
         }
+
+        val peopleTextView = findViewById<TextView>(R.id.insert_people)
+        val value = currentRecipe.people
+        peopleTextView.text = value.toString()
+        if (value == 1) findViewById<ImageButton>(R.id.decrease_button).isEnabled = false
+
 
     }
 
