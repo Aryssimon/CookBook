@@ -94,19 +94,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_ingredients">
-
-                <EditText
-                    android:id="@+id/insert_ingredients"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints="@string/hint_ingredients"
-                    android:ems="10"
-                    android:fontFamily="sans-serif-condensed"
-                    android:hint="@string/hint_ingredients"
-                    android:inputType="textShortMessage"
-                    android:textColor="?attr/myThirdColor" />
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/add_ingredients"/>
 
             <TextView
                 android:id="@+id/add_steps"
@@ -145,20 +133,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_steps">
-
-                <EditText
-                    android:id="@+id/insert_steps"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints="@string/hint_steps"
-                    android:ems="10"
-                    android:fontFamily="sans-serif-condensed"
-                    android:hint="@string/hint_steps"
-                    android:inputType="textShortMessage"
-                    android:textColor="?attr/myThirdColor" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/add_steps"/>
 
             <TextView
                 android:id="@+id/add_people"

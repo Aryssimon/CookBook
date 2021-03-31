@@ -25,6 +25,8 @@ open class AddActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = resources.getString(R.string.add_activity_title)
         findViewById<ImageButton>(R.id.decrease_button).isEnabled = false
+        addOneIngredient()
+        addOneStep()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -39,12 +41,21 @@ open class AddActivity : AppCompatActivity() {
     }
 
     fun onClickAddIngredient(view: View) {
+        addOneIngredient()
+    }
+
+    private fun addOneIngredient() {
         val linearLayout = findViewById<LinearLayout>(R.id.linLayout_ingredients)
         val editText = createEditText(getString(R.string.hint_ingredients))
         linearLayout.addView(editText)
     }
 
+
     fun onClickAddSteps(view: View) {
+        addOneStep()
+    }
+
+    private fun addOneStep() {
         val linearLayout = findViewById<LinearLayout>(R.id.linLayout_steps)
         val editText = createEditText(getString(R.string.hint_steps))
         linearLayout.addView(editText)

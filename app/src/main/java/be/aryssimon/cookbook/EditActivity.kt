@@ -52,12 +52,12 @@ class EditActivity : AppCompatActivity() {
 
         val splitIngredients = currentRecipe.ingredients.split("\n")
         for (line in splitIngredients) {
-            addOneIngredient(line)
+            addOneIngredient(line.subSequence(1, line.length) as String)
         }
 
         val splitSteps = currentRecipe.steps.split("\n")
         for (line in splitSteps) {
-            addOneStep(line)
+            addOneStep(line.subSequence(1, line.length) as String)
         }
 
     }
