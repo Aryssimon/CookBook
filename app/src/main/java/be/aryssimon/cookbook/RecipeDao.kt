@@ -1,9 +1,6 @@
 package be.aryssimon.cookbook
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface RecipeDao {
@@ -14,7 +11,10 @@ interface RecipeDao {
     fun getById(inputId: Int): Recipe
 
     @Insert
-    fun insertAll(vararg recipe: Recipe)
+    fun insertAll(recipe: Recipe)
+
+    @Update
+    fun updateAll(recipe: Recipe)
 
     @Delete
     fun delete(recipe: Recipe)
