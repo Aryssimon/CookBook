@@ -233,6 +233,7 @@ class MainActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         } else {
             index -= 1
+            disableUselessButtons()
             if (index < 0) index = recipeList.size - 1
             showRecipe()
         }
