@@ -13,16 +13,7 @@ class EditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = resources.getString(R.string.edit_activity_title)
-
-
-        val b = intent.extras
-        if (b != null) {
-            fillWithRecipeInfos(b.getInt("recipeIndex"))
-        } else {
-            error(resources.getString(R.string.edit_error_launching))
-        }
-
-
+        fillWithRecipeInfos()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -36,22 +27,28 @@ class EditActivity : AppCompatActivity() {
         return super.onContextItemSelected(item)
     }
 
-    private fun fillWithRecipeInfos(recipeIndex: Int) {
-        val recipeDao = Room
-            .databaseBuilder(this.applicationContext, AppDatabase::class.java, "database-name")
-            .allowMainThreadQueries()
-            .build()
-            .recipeDao()
-        val recipeList = recipeDao.getAll()
-        val currentRecipe = recipeList[recipeIndex]
+    private fun fillWithRecipeInfos() {
+        val intentExtras = intent.extras
+        if (intentExtras != null) {
+            val recipeDao = Room
+                    .databaseBuilder(this.applicationContext, AppDatabase::class.java, "database-name")
+                    .allowMainThreadQueries()
+                    .build()
+                    .recipeDao()
+            val recipeList = recipeDao.getAll()
+            val currentRecipe = recipeList[intentExtras.getInt("recipeIndex")]
 
-        loadTitle(currentRecipe)
-        loadIngredients(currentRecipe)
-        loadSteps(currentRecipe)
-        loadPeoples(currentRecipe)
-        loadPrice(currentRecipe)
-        loadPreparationTime(currentRecipe)
-        loadCookingTime(currentRecipe)
+            loadTitle(currentRecipe)
+            loadIngredients(currentRecipe)
+            loadSteps(currentRecipe)
+            loadPeoples(currentRecipe)
+            loadPrice(currentRecipe)
+            loadPreparationTime(currentRecipe)
+            loadCookingTime(currentRecipe)
+            
+        } else {
+            error(resources.getString(R.string.edit_error_launching))
+        }
     }
 
     private fun addOneIngredient(text: String) {
